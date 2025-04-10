@@ -5,7 +5,7 @@ import pickle
 app = Flask(__name__)
 
 # Load the saved pipeline
-with open("D:\Project\Deploy\model_d.pkl", 'rb') as f:
+with open("model_d.pkl", 'rb') as f:
     pipeline = pickle.load(f)
 
 scaler = pipeline['scaler']

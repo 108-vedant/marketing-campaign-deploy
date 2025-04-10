@@ -1,0 +1,95 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank Marketing Prediction</title>
+</head>
+<body>
+    <h2>Enter Client Details</h2>
+    <form action="/predict" method="post">
+        <!-- Categorical Fields -->
+        <label for="job">Job:</label>
+        <select name="job" required>
+            <option value="housemaid">housemaid</option>
+            <option value="services">services</option>
+            <option value="admin.">admin.</option>
+            <option value="blue-collar">blue-collar</option>
+            <option value="technician">technician</option>
+            <option value="retired">retired</option>
+            <option value="management">management</option>
+            <option value="unemployed">unemployed</option>
+            <option value="self-employed">self-employed</option>
+            <option value="entrepreneur">entrepreneur</option>
+            <option value="student">student</option>
+        </select><br><br>
+
+        <label for="marital">Marital:</label>
+        <select name="marital" required>
+            <option value="married">married</option>
+            <option value="single">single</option>
+            <option value="divorced">divorced</option>
+        </select><br><br>
+
+        <label for="education">Education:</label>
+        <select name="education" required>
+            <option value="secondary">secondary</option>
+            <option value="tertiary">tertiary</option>
+            <option value="primary">primary</option>
+            <option value="unknown">unknown</option>
+            
+        </select><br><br>
+
+        <label for="default">Default:</label>
+        <select name="default" required>
+            <option value="no">no</option>
+            <option value="yes">yes</option>
+        </select><br><br>
+
+        <label for="housing">Housing Loan:</label>
+        <select name="housing" required>
+            <option value="no">no</option>
+            <option value="yes">yes</option>
+        </select><br><br>
+
+        <label for="loan">Personal Loan:</label>
+        <select name="loan" required>
+            <option value="no">no</option>
+            <option value="yes">yes</option>
+        </select><br><br>
+
+        <label for="month">Month:</label>
+        <select name="month" required>
+            <option value="may">may</option>
+            <option value="jun">jun</option>
+            <option value="jul">jul</option>
+            <option value="aug">aug</option>
+            <option value="oct">oct</option>
+            <option value="nov">nov</option>
+            <option value="dec">dec</option>
+            <option value="mar">mar</option>
+            <option value="apr">apr</option>
+            <option value="sep">sep</option>
+        </select><br><br>
+
+        <label for="poutcome">Previous Outcome:</label>
+        <select name="poutcome" required>
+            <option value="unknown">unknown</option>
+            <option value="failure">failure</option>
+            <option value="success">success</option>
+            <option value="other">other</option>
+        </select><br><br>
+
+        <!-- Numeric Fields -->
+        {% for col in ['age', 'balance', 'duration', 'campaign', 'pdays', 'previous','day'] %}
+        <label for="{{ col }}">{{ col.replace('_', ' ').title() }}:</label>
+        <input type="number" step="any" name="{{ col }}" required><br><br>
+        {% endfor %}
+
+        <input type="submit" value="Predict">
+    </form>
+    {% if prediction_text %}
+    <h3>{{ prediction_text }}</h3>
+  {% endif %}
+</body>
+</html>

@@ -1,6 +1,5 @@
-
-flask
+Flask
 pandas
-scikit-learn
 gunicorn
-
+scikit-learn==1.0.2
+xgboost
